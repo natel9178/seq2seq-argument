@@ -109,8 +109,8 @@ class CharDecoder(nn.Module):
 
         output_word = []
         _, batch, hidden_size = list(initialStates[0].size())
-        current_chars = torch.LongTensor(
-            [self.target_vocab.char2id['{']] * batch).unsqueeze(dim=0)
+        current_chars = torch.tensor(
+            [self.target_vocab.char2id['{']] * batch, dtype=torch.long, device=device).unsqueeze(dim=0)
 
         current_state = initialStates
         for _ in range(max_length):
