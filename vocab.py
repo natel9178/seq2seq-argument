@@ -166,8 +166,8 @@ class VocabEntry(object):
         sents_padded = pad_sents_char(
             self.words2charindices(sents), self.char2id['<pad>'])
         # Output of pad_sents_char 0 is (4, 6, 21), (sentence_num/batch, max_sent_len, max_word_len)
-        sents_var = torch.LongTensor(
-            sents_padded, device=device).permute(1, 0, 2).contiguous()
+        sents_var = torch.tensor(
+            sents_padded, dtype=torch.long, device=device).permute(1, 0, 2).contiguous()
         return sents_var
         # END YOUR CODE
 
