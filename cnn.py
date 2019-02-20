@@ -29,8 +29,8 @@ class CNN(nn.Module):
         # print('CNN', x.shape)
         x_conv = self.conv(x)
         x_conv_out = nn.ReLU()(x_conv)
-        # print('CNN2', x_conv_out.shape)
         x_conv_out = self.maxpool(x_conv_out)
-        return x_conv_out
+        # x_conv_out, _ = torch.max(x_conv_out, dim=-1)
+        return x_conv_out  # .unsqueeze(-1)
 
 # END YOUR CODE

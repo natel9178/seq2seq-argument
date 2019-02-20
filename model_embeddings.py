@@ -77,8 +77,9 @@ class ModelEmbeddings(nn.Module):
             x_emb.size())
         # print(list(x_emb.size()))
         # (N,C,L), N should be all the words individually. C should be char_embed_size, L should be max_word_length
-        x_reshape = x_emb.view(sentence_length*batch_size,
-                               char_embed_size, max_word_length)
+        x_reshape = x_emb.transpose(2, 3)
+        x_reshape = x_reshape.view(sentence_length*batch_size,
+                                   char_embed_size, max_word_length)
         # print('x_reshape', x_reshape.shape)
         x_conv_out = self.convolution(x_reshape)
         # print('x_conv_out', x_conv_out.size())

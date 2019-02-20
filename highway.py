@@ -34,8 +34,7 @@ class Highway(nn.Module):
         x_gate = self.gate(x)
         x_gate = nn.Sigmoid()(x_gate)
 
-        x_highway = torch.mul(x_proj, x_gate) + \
-            torch.mul((1-x_gate), x)
+        x_highway = x_proj * x_gate + (1-x_gate) * x
 
         x_wordemb = self.dropout(x_highway)
         # print('HW2', x_wordemb.shape)

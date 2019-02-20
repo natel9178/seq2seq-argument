@@ -1,0 +1,46 @@
+1) epoch 82, iter 410, avg. loss 0.46, avg. ppl 1.02 cum. examples 20, speed 219.96 words/sec, time elapsed 72.08 sec
+epoch 84, iter 420, avg. loss 0.35, avg. ppl 1.02 cum. examples 40, speed 224.41 words/sec, time elapsed 73.86 sec
+epoch 86, iter 430, avg. loss 0.29, avg. ppl 1.01 cum. examples 60, speed 252.06 words/sec, time elapsed 75.44 sec
+epoch 88, iter 440, avg. loss 0.46, avg. ppl 1.02 cum. examples 80, speed 247.20 words/sec, time elapsed 77.06 sec
+epoch 90, iter 450, avg. loss 0.19, avg. ppl 1.01 cum. examples 100, speed 243.79 words/sec, time elapsed 78.70 sec
+epoch 92, iter 460, avg. loss 0.14, avg. ppl 1.01 cum. examples 120, speed 249.76 words/sec, time elapsed 80.31 sec
+epoch 94, iter 470, avg. loss 0.14, avg. ppl 1.01 cum. examples 140, speed 226.30 words/sec, time elapsed 82.07 sec
+epoch 96, iter 480, avg. loss 0.13, avg. ppl 1.01 cum. examples 160, speed 209.41 words/sec, time elapsed 83.98 sec
+epoch 98, iter 490, avg. loss 0.11, avg. ppl 1.01 cum. examples 180, speed 234.13 words/sec, time elapsed 85.69 sec
+epoch 100, iter 500, avg. loss 0.09, avg. ppl 1.00 cum. examples 200, speed 191.80 words/sec, time elapsed 87.78 sec
+epoch 100, iter 500, cum. loss 0.23, cum. ppl 1.01 cum. examples 200
+begin validation ...
+validation: iter 500, dev. ppl 1.002311
+save currently the best model to [model.bin]
+save model parameters to [model.bin]
+reached maximum number of epochs!
+
+load test source sentences from [./en_es_data/test_tiny.es]
+load test target sentences from [./en_es_data/test_tiny.en]
+load model from model.bin
+Decoding: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 29.61it/s]
+Corpus BLEU: 99.29792465574434
+
+2) save model parameters to [model.bin]
+epoch 182, iter 910, avg. loss 0.35, avg. ppl 1.02 cum. examples 20, speed 137.10 words/sec, time elapsed 239.84 sec
+epoch 184, iter 920, avg. loss 0.31, avg. ppl 1.02 cum. examples 40, speed 154.39 words/sec, time elapsed 242.43 sec
+epoch 186, iter 930, avg. loss 0.27, avg. ppl 1.01 cum. examples 60, speed 150.79 words/sec, time elapsed 245.09 sec
+epoch 188, iter 940, avg. loss 0.25, avg. ppl 1.01 cum. examples 80, speed 152.75 words/sec, time elapsed 247.71 sec
+epoch 190, iter 950, avg. loss 0.20, avg. ppl 1.01 cum. examples 100, speed 149.13 words/sec, time elapsed 250.39 sec
+epoch 192, iter 960, avg. loss 0.19, avg. ppl 1.01 cum. examples 120, speed 148.87 words/sec, time elapsed 253.08 sec
+epoch 194, iter 970, avg. loss 0.17, avg. ppl 1.01 cum. examples 140, speed 151.12 words/sec, time elapsed 255.72 sec
+epoch 196, iter 980, avg. loss 0.16, avg. ppl 1.01 cum. examples 160, speed 153.34 words/sec, time elapsed 258.33 sec
+epoch 198, iter 990, avg. loss 0.14, avg. ppl 1.01 cum. examples 180, speed 149.02 words/sec, time elapsed 261.02 sec
+epoch 200, iter 1000, avg. loss 0.14, avg. ppl 1.01 cum. examples 200, speed 144.81 words/sec, time elapsed 263.78 sec
+epoch 200, iter 1000, cum. loss 0.22, cum. ppl 1.01 cum. examples 200
+begin validation ...
+validation: iter 1000, dev. ppl 1.003387
+save currently the best model to [model.bin]
+save model parameters to [model.bin]
+reached maximum number of epochs!
+
+load test source sentences from [./en_es_data/test_tiny.es]
+load test target sentences from [./en_es_data/test_tiny.en]
+load model from model.bin
+Decoding: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00,  7.26it/s]
+Corpus BLEU: 99.29792465574434
