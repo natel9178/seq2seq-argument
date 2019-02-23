@@ -25,8 +25,8 @@ class Highway(nn.Module):
 
     def forward(self, x):
         """ Forward propagate highway layer
-        @param x_convout (input tensor)
-        @returns tensor after applying highway layer with shape (num_batches, num_features)
+        @param x (input tensor)
+        @returns tensor after applying highway layer with shape (num_batches, embed_size)
         """
         # print('HW', x.shape)
         x_proj = self.projection(x)

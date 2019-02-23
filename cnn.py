@@ -25,6 +25,8 @@ class CNN(nn.Module):
 
     def forward(self, x):
         """ Forward propagate CNN layer
+        @param x (input tensor, shape (batch_size, char_embed_size, max_word_len))
+        @returns x_conv_out (output tensor after convolutions, (batch_size, embed_size, 1))
         """
         # print('CNN', x.shape)
         x_conv = self.conv(x)
