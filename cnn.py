@@ -14,8 +14,11 @@ from torch import nn
 class CNN(nn.Module):
     def __init__(self, char_embedding_size, output_embedding_size, max_word_len=21, k=5, bias=True):
         """ Initialize CNN Layer
-        @param embedding_size (embedding size to use)
+        @param char_embedding_size (embedding size to use)
+        @param output_embedding_size (output embedding size to use)
+        @param max_word_len (max word length in characters)
         @param k (kernel size)
+        @param bia (bool to use bias)
         """
         super(CNN, self).__init__()
         self.conv = nn.Conv1d(char_embedding_size,
