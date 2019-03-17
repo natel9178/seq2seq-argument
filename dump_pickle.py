@@ -1,7 +1,7 @@
 import _pickle as pickle
 import argparse
 
-def process(pickle, save_file, keep_case, trim_length=50):
+def process(pickle, save_file, keep_case, trim_length):
   with open(save_file+'.src', "a") as src_file:
     with open(save_file+'.tgt', "a") as tgt_file:
       for discussion in pickle:
@@ -25,7 +25,7 @@ def main():
   parser.add_argument('-valid_save', required=True)
   parser.add_argument('-test', required=True)
   parser.add_argument('-test_save', required=True)
-  parser.add_argument('-trim_length', type=int, default=50)
+  parser.add_argument('-trim_length', type=int, default=25)
   parser.add_argument('-keep_case', action='store_true')
   opt = parser.parse_args()
 
