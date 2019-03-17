@@ -2,7 +2,7 @@
 
 if [ "$1" = "train" ]; then
 	CUDA_VISIBLE_DEVICES=0 python run.py train --train-src=./data/train.src --train-tgt=./data/train.tgt \
-        --dev-src=./data/valid.src --dev-tgt=./data/valid.tgt --vocab=vocab.json --cuda --batch-size=1 --no-char-decoder
+        --dev-src=./data/valid.src --dev-tgt=./data/valid.tgt --vocab=vocab.json --cuda --batch-size=2 --no-char-decoder
 elif [ "$1" = "test" ]; then
     mkdir -p outputs
     touch outputs/test_outputs.txt
