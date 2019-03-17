@@ -145,6 +145,10 @@ def train(args: Dict):
 
     model = model.to(device)
 
+    model_parameters = filter(lambda p: p.requires_grad, model.parameters())
+    n_params = sum([np.prod(p.size()) for p in model_parameters])
+    print('Total number of parameters: {n:3.3}M'.format(n=n_params/1000000.0))
+
     optimizer = torch.optim.Adam(model.parameters(), lr=float(args['--lr']))
 
     num_trial = 0
