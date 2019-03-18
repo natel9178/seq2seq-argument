@@ -162,7 +162,7 @@ def train(args: Dict):
     if args['--log-to'] and args['--log-to'] != '':
         print('logging to %s' % (args['--log-to']))
         log_file = open(args['--log-to'], 'w') 
-        log_file.write('isvalid,epoch,iter,avg. loss,avg. ppl,cum. examples,speed,elapsed')
+        log_file.write('isvalid,epoch,iter,avg. loss,avg. ppl,cum. examples,speed,elapsed\n')
         log_file.flush()
 
     while True:
