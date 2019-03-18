@@ -159,8 +159,9 @@ def train(args: Dict):
     train_time = begin_time = time.time()
     print('begin Maximum Likelihood training')
 
-    should_log_to_file = args['--log-to'] and args['--log-to'] != ''
-    if should_log_to_file:
+    print('log is ', args['--log-to'])
+    if args['--log-to'] and args['--log-to'] != '':
+        print('logging to, %s' % (args['--log-to']))
         log_file = open(args['--log-to'], 'a') 
         log_file.write('isvalid,epoch,iter,avg. loss,avg. ppl,cum. examples,speed,elapsed')
 
