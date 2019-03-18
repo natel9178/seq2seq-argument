@@ -159,9 +159,8 @@ def train(args: Dict):
     train_time = begin_time = time.time()
     print('begin Maximum Likelihood training')
 
-    print('log is ', args['--log-to'])
     if args['--log-to'] and args['--log-to'] != '':
-        print('logging to, %s' % (args['--log-to']))
+        print('logging to %s' % (args['--log-to']))
         log_file = open(args['--log-to'], 'a') 
         log_file.write('isvalid,epoch,iter,avg. loss,avg. ppl,cum. examples,speed,elapsed')
 
@@ -205,7 +204,7 @@ def train(args: Dict):
                                                                                          report_tgt_words / (time.time() - train_time),
                                                                                          time.time() - begin_time), file=sys.stderr)
                 if log_file and train_iter % (log_every * 10) == 0:
-                    log_file.write('No,%d,%d,%.2f,%.2f,%d,%.2f,%.2f' % (epoch, train_iter,
+                    log_file.write('No,%d,%d,%.2f,%.2f,%d,%.2f,%.2f\n' % (epoch, train_iter,
                                                                                          report_loss / report_examples,
                                                                                          math.exp(report_loss / report_tgt_words),
                                                                                          cum_examples,
@@ -221,7 +220,7 @@ def train(args: Dict):
                                                                                          np.exp(cum_loss / cum_tgt_words),
                                                                                          cum_examples), file=sys.stderr)
                 if log_file:
-                    log_file.write('Yes, epoch %d, iter %d, cum. loss %.2f, cum. ppl %.2f cum. examples %d' % (epoch, train_iter,
+                    log_file.write('Yes, epoch %d, iter %d, cum. loss %.2f, cum. ppl %.2f cum. examples %d\n' % (epoch, train_iter,
                                                                                          cum_loss / cum_examples,
                                                                                          np.exp(cum_loss / cum_tgt_words),
                                                                                          cum_examples))
