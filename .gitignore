@@ -3,3 +3,4 @@ model.bin.optim
 assignment5.zip
 data/
 pickles/train*
+vocab.json
