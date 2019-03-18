@@ -40,6 +40,7 @@ Options:
     --dropout=<float>                       dropout [default: 0.3]
     --max-decoding-time-step=<int>          maximum number of decoding time steps [default: 70]
     --no-char-decoder                       do not use the character decoder
+    --log-to=<file>                         Log CSV training data to file
 """
 import math
 import sys
@@ -158,6 +159,11 @@ def train(args: Dict):
     train_time = begin_time = time.time()
     print('begin Maximum Likelihood training')
 
+    should_log_to_file = args['--log-to'] and args['--log-to'] != ''
+    if should_log_to_file:
+        log_file = open(args['--log-to'], 'a') 
+        log_file.write('isvalid,epoch,iter,avg. loss,avg. ppl,cum. examples,speed,elapsed')
+
     while True:
         epoch += 1
 
@@ -197,7 +203,13 @@ def train(args: Dict):
                                                                                          cum_examples,
                                                                                          report_tgt_words / (time.time() - train_time),
                                                                                          time.time() - begin_time), file=sys.stderr)
-
+                if log_file and train_iter % (log_every * 10) == 0:
+                    log_file.write('No,%d,%d,%.2f,%.2f,%d,%.2f,%.2f' % (epoch, train_iter,
+                                                                                         report_loss / report_examples,
+                                                                                         math.exp(report_loss / report_tgt_words),
+                                                                                         cum_examples,
+                                                                                         report_tgt_words / (time.time() - train_time),
+                                                                                         time.time() - begin_time))
                 train_time = time.time()
                 report_loss = report_tgt_words = report_examples = 0.
 
@@ -207,7 +219,11 @@ def train(args: Dict):
                                                                                          cum_loss / cum_examples,
                                                                                          np.exp(cum_loss / cum_tgt_words),
                                                                                          cum_examples), file=sys.stderr)
-
+                if log_file:
+                    log_file.write('Yes, epoch %d, iter %d, cum. loss %.2f, cum. ppl %.2f cum. examples %d' % (epoch, train_iter,
+                                                                                         cum_loss / cum_examples,
+                                                                                         np.exp(cum_loss / cum_tgt_words),
+                                                                                         cum_examples))
                 cum_loss = cum_examples = cum_tgt_words = 0.
                 valid_num += 1
 
