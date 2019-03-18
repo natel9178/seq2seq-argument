@@ -163,6 +163,7 @@ def train(args: Dict):
         print('logging to %s' % (args['--log-to']))
         log_file = open(args['--log-to'], 'w') 
         log_file.write('isvalid,epoch,iter,avg. loss,avg. ppl,cum. examples,speed,elapsed')
+        log_file.flush()
 
     while True:
         epoch += 1
@@ -210,6 +211,7 @@ def train(args: Dict):
                                                                                          cum_examples,
                                                                                          report_tgt_words / (time.time() - train_time),
                                                                                          time.time() - begin_time))
+                    log_file.flush()                                                                     
                 train_time = time.time()
                 report_loss = report_tgt_words = report_examples = 0.
 
@@ -224,6 +226,7 @@ def train(args: Dict):
                                                                                          cum_loss / cum_examples,
                                                                                          np.exp(cum_loss / cum_tgt_words),
                                                                                          cum_examples))
+                    log_file.flush()                                                                     
                 cum_loss = cum_examples = cum_tgt_words = 0.
                 valid_num += 1
 
@@ -277,6 +280,8 @@ def train(args: Dict):
 
             if epoch == int(args['--max-epoch']):
                 print('reached maximum number of epochs!', file=sys.stderr)
+                if log_file:
+                    log_file.close()
                 exit(0)
 
 
