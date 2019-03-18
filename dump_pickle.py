@@ -8,6 +8,8 @@ def process(pickle, save_file, keep_case, trim_length):
         for src, tgt in zip(discussion['src'], discussion['tgt']):
           src_str = " ".join(src[:trim_length])
           tgt_str = " ".join(tgt[:trim_length])
+          src_str = src_str.decode('utf-8','ignore').encode("utf-8")
+          tgt_str = tgt_str.decode('utf-8','ignore').encode("utf-8")
           
           if not keep_case:
             src_str = src_str.lower()
